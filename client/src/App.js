@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Calendar from './calendar';
 import RoleSelector from './role-selector';
 
@@ -14,6 +14,7 @@ function getInitialRole() {
 
   return role;
 }
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
 function App() {
   const [schedule, setSchedule] = useState({});
@@ -27,7 +28,7 @@ function App() {
     }
 
     const dataToSend = { date: date, id: currentRole }; // Data to send
-    await fetch('/api/schedule', {
+    await fetch(`${API_BASE_URL}/api/schedule`, {
       method: isAdd ? 'POST' : 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -40,11 +41,11 @@ function App() {
   };
 
   useEffect(() => {
-      fetch('/api/schedule')
+      fetch(`${API_BASE_URL}/api/schedule`)
         .then(res => res.json())
         .then(data => setSchedule(data))
         .catch(err => console.error(err));
-      fetch('/api/roles')
+      fetch(`${API_BASE_URL}/api/roles`)
         .then(res => res.json())
         .then(data => setRoles(data.roles))
         .catch(err => console.error(err));

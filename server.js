@@ -1,18 +1,23 @@
 // server.js
 const express = require('express');
+const cors = require('cors');
 const { Pool } = require('pg');
 require('dotenv').config(); // Load environment variables
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(cors({
+  origin: process.env.ORIGIN_ALLOWED // Or an array of allowed origins
+}));
+
 // Database connection pool
 const pool = new Pool({
-user: process.env.DB_USER,
-host: process.env.DB_HOST,
-database: process.env.DB_NAME,
-password: process.env.DB_PASSWORD,
-port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 const getScenes = async () => {
