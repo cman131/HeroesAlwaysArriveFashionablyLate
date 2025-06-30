@@ -1,0 +1,106 @@
+.month-nav {
+  display: flex;
+}
+.month-nav-display {
+  min-width: 250px;
+  text-align: center;
+}
+.month-nav-button {
+  min-width: 50px;
+  display: inline-block;
+  border: none;
+  background-color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 5px;
+}
+.right {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.left {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.month-nav-button:hover {
+  background-color: lightblue;
+}
+.dates {
+  display: flex;
+  flex-direction: column;
+}
+.date-row,
+.day-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.day-nav h3,
+.date-block {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  min-width: 15px;
+}
+.date-block {
+  border: 1px solid black;
+  height: 200px;
+  cursor: pointer;
+  display: flex;
+  padding: 10px;
+  background-color: #F0A2A4;
+  align-items: start;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media only screen and (max-height: 380px) {
+  .date-block {
+    height: 100px;
+  }
+  .day-nav {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .date-block {
+    height: 50px;
+  }
+  .day-nav {
+    font-size: 8px;
+  }
+  .month-nav {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.date-block:hover {
+  background-color: #32603f;
+}
+.selected {
+  background-color: #B2E0B1;
+}
+.selected:hover {
+  background-color: #af2a2d;
+}
+button[disabled],
+button[disabled]:hover,
+.disabled:hover,
+.disabled {
+  cursor: default;
+  background-color: lightgrey;
+}
+.info-box {
+  width: 100%;
+}
+.checkmark {
+    position: absolute;
+    top: 35%;
+    right: 80px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 80px;
+    height: 160px;
+    border-bottom: 10px solid rgb(5, 95, 20);
+    border-right: 10px solid rgb(5, 95, 20);
+}
