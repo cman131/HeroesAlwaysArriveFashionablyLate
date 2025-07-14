@@ -46,7 +46,9 @@ const getSchedule = async () => {
   });
   const scenes = await getScenes();
   Object.keys(dates).forEach(key => {
-    dates[key].sceneCount = scenes.reduce((prev, cur) => cur.roles.every(role => dates[key].roles.includes(role)) ? prev + 1 : prev, 0);
+    const dayScenes = scenes.reduce((prev, cur) => cur.roles.every(role => dates[key].roles.includes(role)) ? [...prev, cur] : prev, []);
+    dates[key].sceneCount = dayScenes.length;
+    dates[key].scenes = dayScenes.map(scenes => scenes.scene_id);
   });
   return dates;
 };

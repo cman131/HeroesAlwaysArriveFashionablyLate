@@ -111,6 +111,10 @@ export class DateBlock extends React.Component {
     if (date?.schedule?.sceneCount > 0) {
       sceneInfo.push(<span>{date?.schedule.sceneCount} scenes possible</span>);
     }
+    let sceneSummary = [];
+    if (date?.schedule?.sceneCount > 0) {
+      sceneSummary = date.schedule.scenes.map(scene => <li>{scene}</li>);
+    }
 
     let checkmark = [];
     if (isSelected) {
@@ -128,6 +132,10 @@ export class DateBlock extends React.Component {
       <div className="info-box">
         {sceneInfo}
       </div>
+      <ul class={'scene-summary-window' + (sceneSummary.length <= 0 ? ' hidden' : '')}>
+        <h3>Scenes possible</h3>
+        {sceneSummary}
+      </ul>
       {checkmark}
     </button>;
   }
